@@ -8,8 +8,10 @@ def write_file(file_name, file_content):
     - file_name (str): The name of the file (including file extension).
     - file_content (str): The content to be written to the file.
     """
-    with open(file_name + ".txt", "w") as file:
-        file.write(file_content)
+    if not file_name.edswith('.text'):
+        file_name += 'txt'
+
+        
 
 def append_to_file(file_name, append_content):
     """
@@ -34,3 +36,4 @@ def read_file(file_name):
     """
     with open(file_name + ".txt", "r") as file:
         return file.read()
+    
