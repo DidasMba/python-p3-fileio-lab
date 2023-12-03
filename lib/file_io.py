@@ -8,32 +8,30 @@ def write_file(file_name, file_content):
     - file_name (str): The name of the file (including file extension).
     - file_content (str): The content to be written to the file.
     """
-    if not file_name.edswith('.text'):
-        file_name += 'txt'
-
-        
-
-def append_to_file(file_name, append_content):
+  def write_file(file_name, file_content):
     """
-    Append content to a .txt file.
+    Write the given file_content to a file with the specified file_name.
 
     Parameters:
-    - file_name (str): The name of the file (including file extension).
-    - append_content (str): The content to be appended to the file.
+    - file_name (str): The name or path of the file to be written.
+    - file_content (str): The content to be written to the file.
     """
-    with open(file_name + ".txt", "a") as file:
-        file.write(append_content)
+    # Ensure the file_name has a .txt extension
+    if not file_name.endswith('.txt'):
+        file_name += '.txt'
 
-def read_file(file_name):
-    """
-    Read and return the content of a .txt file.
+    try:
+        # Open the file for writing
+        with open(file_name, 'w') as file:
+            # Write the content to the file
+            file.write(file_content)
+        print(f"File '{file_name}' has been successfully written.")
+    except Exception as e:
+        print(f"Error writing to file '{file_name}': {e}")
 
-    Parameters:
-    - file_name (str): The name of the file (including file extension).
+# Example usage:
+file_name = "example_file"
+file_content = "This is an example content."
 
-    Returns:
-    - str: The content of the file.
-    """
-    with open(file_name + ".txt", "r") as file:
-        return file.read()
-    
+# Call the function with the provided arguments
+write_file(file_name, file_content)
